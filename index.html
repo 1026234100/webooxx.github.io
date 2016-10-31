@@ -170,7 +170,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>有时候需要个抽奖的界面，现在抽出来单独做个应用，年会上抽奖可以用。</p>
-<h2 id="运行界面："><a href="#运行界面：" class="headerlink" title="运行界面："></a>运行界面：</h2><p><a href="/demo/reward-maching.html">预览地址</a></p>
+<h2 id="运行界面："><a href="#运行界面：" class="headerlink" title="运行界面："></a>运行界面：</h2><p><a href="/ddemo/reward-maching.html">预览地址</a></p>
 <p><img src="/images/2016-10-30 10.18.29.png" alt="效果预览"></p>
 <h2 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h2><h4 id="盒子设定"><a href="#盒子设定" class="headerlink" title="盒子设定"></a>盒子设定</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> size = <span class="number">5</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> items = [];</div><div class="line"><span class="keyword">var</span> items_top = [];</div><div class="line"><span class="keyword">var</span> items_bottom=[]</div><div class="line"><span class="keyword">var</span> items_right = [];</div><div class="line"><span class="keyword">var</span> items_left = [];</div><div class="line"></div><div class="line"><span class="keyword">var</span> box = $(<span class="string">'.box'</span>);  <span class="comment">// 容器</span></div><div class="line"></div><div class="line">box.css(<span class="string">'width'</span>,size*<span class="number">100</span>+<span class="string">'px'</span>); <span class="comment">// 默认100*100 是每个格子的大小</span></div><div class="line">box.css(<span class="string">'height'</span>,size*<span class="number">100</span>+<span class="string">'px'</span>)</div></pre></td></tr></table></figure>
 <h4 id="插入中奖方块"><a href="#插入中奖方块" class="headerlink" title="插入中奖方块"></a>插入中奖方块</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$.each(<span class="built_in">Array</span>(size),<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">  $.each(<span class="built_in">Array</span>(size),<span class="function"><span class="keyword">function</span> (<span class="params">y</span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> idx = x*size + y;</div><div class="line">      <span class="keyword">var</span> id = <span class="string">'i_'</span>+idx;</div><div class="line">      box.append(<span class="string">'&lt;div class="box__item" data-idx="'</span>+idx+<span class="string">'" id="'</span>+id+<span class="string">'"&gt;'</span>);</div><div class="line"></div><div class="line">      <span class="comment">// 把id分成四个部分</span></div><div class="line">      <span class="keyword">if</span>( idx &gt; size  &amp;&amp; idx%size == size<span class="number">-1</span> &amp;&amp; idx &lt; size*size-size)&#123;</div><div class="line">        items_right.push(id);</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>( idx &gt; size<span class="number">-1</span>  &amp;&amp; idx%size == <span class="number">0</span> &amp;&amp; idx &lt; size*size-size)&#123;</div><div class="line">        items_left.push(id);</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>( idx&lt; size)&#123;</div><div class="line">        items_top.push(id);</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>(idx &gt; size*size-size<span class="number">-1</span>  )&#123;</div><div class="line">          items_bottom.push(id);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">  &#125;);        </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -439,7 +439,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="/demo/merge.html">效果预览</a></p>
+        <p><a href="/ddemo/merge.html">效果预览</a></p>
 <p><img src="/images/2016-10-30 11.12.22.png" alt="效果预览"></p>
 
       
@@ -479,7 +479,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="/demo/gallery.html">效果预览</a></p>
+        <p><a href="/ddemo/gallery.html">效果预览</a></p>
 <p><img src="/images/2016-10-30 11.09.44.png" alt="效果预览"></p>
 
       
@@ -520,7 +520,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p> 2015年百度首页Logo彩蛋，移动端Canvas小游戏</p>
-<p> <a href="/demo/2015s/index.html">效果预览</a></p>
+<p> <a href="/ddemo/2015s/index.html">效果预览</a></p>
 <p> <img src="/images/2016-10-30 11.46.13.png" alt="效果预览"></p>
 <p>在 logo.baidu.com 上可以看到所有的 Logo 彩蛋历史</p>
 <p><img src="/images/2016-10-30 11.51.45.png" alt="效果预览"></p>
