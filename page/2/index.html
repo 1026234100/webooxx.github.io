@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://webooxx.com"></form>
@@ -67,6 +67,273 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-图灵停机问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/30/图灵停机问题/" class="article-date">
+  <time datetime="2014-03-30T03:01:50.000Z" itemprop="datePublished">2014-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/30/图灵停机问题/">图灵停机问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#图灵停机问题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">God</span>(<span class="params"> program , input </span>)	</span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">if</span>( <span class="xml"><span class="tag">&lt;<span class="name">doSomething</span>&gt;</span> program(input)  )&#123;</span></div><div class="line">		return true;</div><div class="line">	&#125;else&#123;</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Bad( program )&#123;</div><div class="line"></div><div class="line">	if(  God( program , pogram ) )&#123;</div><div class="line">		while(true);</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">Bad( Bad )	//	=&gt; ?</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://webooxx.com/2014/03/30/图灵停机问题/" data-id="ciuxmqelk0023h2mo1ck5xwcm" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS特效-拖拽" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/19/JS特效-拖拽/" class="article-date">
+  <time datetime="2014-01-19T07:51:00.000Z" itemprop="datePublished">2014-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/19/JS特效-拖拽/">JS特效-拖拽</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="part-1"><a href="#part-1" class="headerlink" title="part.1"></a>part.1</h2><p>非常常见的js特效，使用了onmouseup、onmousemove 的简单事件定义，以及addEventListener标准事件侦听处理。</p>
+<p><a href="/ddemo/dragMe.html">效果预览</a></p>
+<p><img src="/images/dragMe.png" alt="效果预览"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oDrag = <span class="built_in">document</span>.getElementById(<span class="string">'draggable'</span>);</div><div class="line"></div><div class="line">	<span class="keyword">var</span> isDraging = <span class="literal">false</span>;</div><div class="line">	<span class="keyword">var</span> startX = <span class="number">0</span>;</div><div class="line">	<span class="keyword">var</span> startY = <span class="number">0</span>;</div><div class="line"></div><div class="line">	oDrag.addEventListener(<span class="string">'mousedown'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'mousedown , isDraging = true'</span>);</div><div class="line"></div><div class="line">		isDraging = <span class="literal">true</span>;</div><div class="line"></div><div class="line">		startX = e.pageX - <span class="keyword">this</span>.offsetLeft ;</div><div class="line">		startY = e.pageY - <span class="keyword">this</span>.offsetTop ;</div><div class="line">	&#125;)</div><div class="line"></div><div class="line">	<span class="built_in">document</span>.onmouseup = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'mouseup , isDraging = false'</span>);</div><div class="line">		isDraging = <span class="literal">false</span>;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="built_in">document</span>.onmousemove = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line"></div><div class="line">	    <span class="keyword">if</span> (isDraging) &#123;</div><div class="line">			oDrag.style.left = ( e.pageX - startX ) + <span class="string">"px"</span>;</div><div class="line">			oDrag.style.top  = ( e.pageY - startY ) + <span class="string">"px"</span>;</div><div class="line"></div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+<h2 id="part-2"><a href="#part-2" class="headerlink" title="part.2"></a>part.2</h2><p>使用 part.1 的基础知识，增加了背景的蒙层，模拟百度首页的登陆浮层效果。</p>
+<p><a href="/ddemo/dragBaiduLoginPanel/index.html">效果预览</a><br><img src="/ddemo/dragBaiduLoginPanel/demo.png" alt="效果预览"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://webooxx.com/2014/01/19/JS特效-拖拽/" data-id="ciuxmqel6001qh2mol9oq5p7i" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js特效/">js特效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/慕课网案例/">慕课网案例</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拖拽/">拖拽</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-当连接到特定网络时执行特定的程序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/02/21/当连接到特定网络时执行特定的程序/" class="article-date">
+  <time datetime="2013-02-21T02:02:00.000Z" itemprop="datePublished">2013-02-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/02/21/当连接到特定网络时执行特定的程序/">当连接到特定网络时执行特定的程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>也许有这样的需求，当我们在公司的时候，连公司的网络后需要开启网关验证程序，在家里连网后需要开启VPN。即：希望在连接到某个特定的网络时执行某些特定的程序。</p>
+<h2 id="步骤0-准备"><a href="#步骤0-准备" class="headerlink" title="步骤0.准备"></a>步骤0.准备</h2><p>思路理清：当网络发生变动时，会有某些事件被记录，那么我们执行的特定程序就在某些特定事件被记录之后。</p>
+<p>相关程序：控制面板-管理工具-查看日志事件，控制面板-管理工具-计划任务</p>
+<p><img src="/images/wn-01.jpg" alt="1"></p>
+<p><img src="/images/wn-02.jpg" alt="2"></p>
+<h2 id="步骤1-连接网络，得到特定事件的ID。"><a href="#步骤1-连接网络，得到特定事件的ID。" class="headerlink" title="步骤1. 连接网络，得到特定事件的ID。"></a>步骤1. 连接网络，得到特定事件的ID。</h2><p>查看网卡的连接日志事件 中 左侧树展开：应用程序和服务日志-Microsoft-Windows-WLAN-AutoConfig-Operational ，首先清空这里的日志，然后连接公司的网络。接下来就可以看到一系列的事件。</p>
+<p><img src="/images/wn-11.jpg" alt="2"></p>
+<p>从事件的详细信息中，确认对应网络的SSID。（加入不同的网络事件ID会不一样）</p>
+<p><img src="/images/wn-12.jpg" alt="12"></p>
+<h2 id="步骤2-将执行程序的操作附加到特定事件发生后"><a href="#步骤2-将执行程序的操作附加到特定事件发生后" class="headerlink" title="步骤2.将执行程序的操作附加到特定事件发生后"></a>步骤2.将执行程序的操作附加到特定事件发生后</h2><p><img src="/images/wn-21.jpg" alt="21"></p>
+<p>设置完成后在计划任务中可以看到对应的事件</p>
+<p><img src="/images/wn-22.jpg" alt="22"></p>
+<h2 id="步骤3-当这个网络断开连接后，关闭上步执行的程序"><a href="#步骤3-当这个网络断开连接后，关闭上步执行的程序" class="headerlink" title="步骤3.当这个网络断开连接后，关闭上步执行的程序"></a>步骤3.当这个网络断开连接后，关闭上步执行的程序</h2><p>在网络连接正常的情况下清空 Microsoft-Windows-WLAN-AutoConfig-Operational 的日志，然后断开网络。从中查找对应的事件ID，然后重复步骤2.</p>
+<p>PS：linux、ubuntu 的直接把脚本放在 /etc/network/if-up.d/ 和/etc/network/if-dn.d/ 下即可，MAC OSX 还没有找到对应方法，如果有知道的还请告知，谢谢。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://webooxx.com/2013/02/21/当连接到特定网络时执行特定的程序/" data-id="ciuxmqekl0019h2mowwwk4vzp" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WIN7/">WIN7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开机脚本/">开机脚本</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率工具/">效率工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-长记性了，千万不要用create-funciton" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/11/28/长记性了，千万不要用create-funciton/" class="article-date">
+  <time datetime="2012-11-27T21:27:00.000Z" itemprop="datePublished">2012-11-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/11/28/长记性了，千万不要用create-funciton/">长记性了，千万不要用create_funciton</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PHP里面用 create_function  的确是一个很方便的函数，可以方便的创建匿名回调函数。</p>
+<p>but! 害我一夜没睡的罪魁祸首也是他，每次 create 就要吃掉一片内存。写了一个才1000左右的循环调用，然后就溢出了。</p>
+<p>PS:当时应该是在做 Tangram 效果评估工具，要扒拉出所有产品线的代码去分析各api的使用情况</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://webooxx.com/2012/11/28/长记性了，千万不要用create-funciton/" data-id="ciuxmqekv001hh2mow8s92oik" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存性能/">内存性能</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发经验/">开发经验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-取得文件目录树-两种递归模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/11/19/取得文件目录树-两种递归模式/" class="article-date">
+  <time datetime="2012-11-19T07:34:00.000Z" itemprop="datePublished">2012-11-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/11/19/取得文件目录树-两种递归模式/">取得文件目录树-两种递归模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>递归是个神奇的东西，有时明白，有时候不明白。</p>
+<p>写的多了便会总结。</p>
+<p>总结两种常用的模式：</p>
+<ul>
+<li>队列递归</li>
+<li>级联递归</li>
+</ul>
+<p>简单的说，一个是返回平坦的队列，一个是返回有层级关系的Map。以取得文件的目录树为例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#    取得文档整体目录树    </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">tree</span><span class="params">( $path ,  $cutfix = <span class="number">0</span> , $regexp = <span class="string">'/.*/'</span> ,  $flat = <span class="number">0</span> , $result = array<span class="params">()</span> ,  $level = <span class="number">0</span> )</span></span>&#123;</div><div class="line">    $level = $level+<span class="number">1</span>;</div><div class="line">    $dirs  = scandir( $path );</div><div class="line">    <span class="keyword">foreach</span>($dirs <span class="keyword">as</span> $d) &#123;</div><div class="line">        $realpath = joinp( $path ,$d );</div><div class="line">        $current  =  <span class="keyword">array</span>();</div><div class="line">        <span class="keyword">if</span>( !is_dir($realpath) )&#123; <span class="keyword">continue</span> ;&#125;</div><div class="line">        <span class="keyword">if</span> ($d == <span class="string">'.'</span> || $d == <span class="string">'..'</span>) &#123;&#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( preg_match( $regexp , $d ) )&#123;</div><div class="line">            <span class="keyword">if</span>( is_int( $flat ) )&#123;</div><div class="line">                $id = <span class="keyword">$this</span>-&gt;gid(<span class="string">'tree'</span>);</div><div class="line">                $result[] = <span class="keyword">array</span>( <span class="string">'id'</span>=&gt;$id,  <span class="string">'pid'</span>=&gt; $flat, <span class="string">'name'</span> =&gt; $d , <span class="string">'path'</span> =&gt; substr( $realpath ,$cutfix ),<span class="string">'level'</span>=&gt;$level );</div><div class="line">                $result   = $result + <span class="keyword">$this</span> -&gt; tree( $realpath  ,$cutfix , $regexp, $id , $result ,$level);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                $result[] =  <span class="keyword">array</span>( <span class="string">'name'</span> =&gt; $d , <span class="string">'path'</span> =&gt; substr( $realpath ,$cutfix ) , <span class="string">'child'</span> =&gt; <span class="keyword">$this</span>-&gt;tree( $realpath ,$cutfix , $regexp  , $flat ,$result  )  );</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> $result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="队列递归返回："><a href="#队列递归返回：" class="headerlink" title="队列递归返回："></a>队列递归返回：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        <span class="attr">id</span>: <span class="number">1</span>,</div><div class="line">        <span class="attr">pid</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"first-1"</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">"/first-1"</span>,</div><div class="line">        <span class="attr">level</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">id</span>: <span class="number">2</span>,</div><div class="line">        <span class="attr">pid</span>: <span class="number">1</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"sec-do"</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">"/first-1/sec-do"</span>,</div><div class="line">        <span class="attr">level</span>: <span class="number">2</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">id</span>: <span class="number">3</span>,</div><div class="line">        <span class="attr">pid</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"first-2"</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">"/first-2"</span>,</div><div class="line">        <span class="attr">level</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">id</span>: <span class="number">4</span>,</div><div class="line">        <span class="attr">pid</span>: <span class="number">3</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"sec-2-1"</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">"/first-2/sec-2-1"</span>,</div><div class="line">        <span class="attr">level</span>: <span class="number">2</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">id</span>: <span class="number">5</span>,</div><div class="line">        <span class="attr">pid</span>: <span class="number">3</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"sec-2-2"</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">"/first-2/sec-2-2"</span>,</div><div class="line">        <span class="attr">level</span>: <span class="number">2</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">id</span>: <span class="number">6</span>,</div><div class="line">        <span class="attr">pid</span>: <span class="number">5</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"thr"</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">"/first-2/sec-2-2/thr"</span>,</div><div class="line">        <span class="attr">level</span>: <span class="number">3</span></div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="级联递归返回"><a href="#级联递归返回" class="headerlink" title="级联递归返回"></a>级联递归返回</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">"first-1"</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">"/first-1"</span>,</div><div class="line">        <span class="attr">child</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">"sec-do"</span>,</div><div class="line">                <span class="attr">path</span>: <span class="string">"/first-1/sec-do"</span>,</div><div class="line">                <span class="attr">child</span>: [</div><div class="line"></div><div class="line">                ]</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">"first-2"</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">"/first-2"</span>,</div><div class="line">        <span class="attr">child</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">"first-1"</span>,</div><div class="line">                <span class="attr">path</span>: <span class="string">"/first-1"</span>,</div><div class="line">                <span class="attr">child</span>: [</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">"sec-do"</span>,</div><div class="line">                        <span class="attr">path</span>: <span class="string">"/first-1/sec-do"</span>,</div><div class="line">                        <span class="attr">child</span>: [</div><div class="line"></div><div class="line">                        ]</div><div class="line">                    &#125;</div><div class="line">                ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">"sec-2-1"</span>,</div><div class="line">                <span class="attr">path</span>: <span class="string">"/first-2/sec-2-1"</span>,</div><div class="line">                <span class="attr">child</span>: [</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">"first-1"</span>,</div><div class="line">                        <span class="attr">path</span>: <span class="string">"/first-1"</span>,</div><div class="line">                        <span class="attr">child</span>: [</div><div class="line">                            &#123;</div><div class="line">                                <span class="attr">name</span>: <span class="string">"sec-do"</span>,</div><div class="line">                                <span class="attr">path</span>: <span class="string">"/first-1/sec-do"</span>,</div><div class="line">                                <span class="attr">child</span>: [</div><div class="line"></div><div class="line">                                ]</div><div class="line">                            &#125;</div><div class="line">                        ]</div><div class="line">                    &#125;</div><div class="line">                ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">"sec-2-2"</span>,</div><div class="line">                <span class="attr">path</span>: <span class="string">"/first-2/sec-2-2"</span>,</div><div class="line">                <span class="attr">child</span>: [</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">"first-1"</span>,</div><div class="line">                        <span class="attr">path</span>: <span class="string">"/first-1"</span>,</div><div class="line">                        <span class="attr">child</span>: [</div><div class="line">                            &#123;</div><div class="line">                                <span class="attr">name</span>: <span class="string">"sec-do"</span>,</div><div class="line">                                <span class="attr">path</span>: <span class="string">"/first-1/sec-do"</span>,</div><div class="line">                                <span class="attr">child</span>: [</div><div class="line"></div><div class="line">                                ]</div><div class="line">                            &#125;</div><div class="line">                        ]</div><div class="line">                    &#125;,</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">"sec-2-1"</span>,</div><div class="line">                        <span class="attr">path</span>: <span class="string">"/first-2/sec-2-1"</span>,</div><div class="line">                        <span class="attr">child</span>: [</div><div class="line">                            &#123;</div><div class="line">                                <span class="attr">name</span>: <span class="string">"first-1"</span>,</div><div class="line">                                <span class="attr">path</span>: <span class="string">"/first-1"</span>,</div><div class="line">                                <span class="attr">child</span>: [</div><div class="line">                                    &#123;</div><div class="line">                                        <span class="attr">name</span>: <span class="string">"sec-do"</span>,</div><div class="line">                                        <span class="attr">path</span>: <span class="string">"/first-1/sec-do"</span>,</div><div class="line">                                        <span class="attr">child</span>: [</div><div class="line"></div><div class="line">                                        ]</div><div class="line">                                    &#125;</div><div class="line">                                ]</div><div class="line">                            &#125;</div><div class="line">                        ]</div><div class="line">                    &#125;,</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">"thr"</span>,</div><div class="line">                        <span class="attr">path</span>: <span class="string">"/first-2/sec-2-2/thr"</span>,</div><div class="line">                        <span class="attr">child</span>: [</div><div class="line">                            &#123;</div><div class="line">                                <span class="attr">name</span>: <span class="string">"first-1"</span>,</div><div class="line">                                <span class="attr">path</span>: <span class="string">"/first-1"</span>,</div><div class="line">                                <span class="attr">child</span>: [</div><div class="line">                                    &#123;</div><div class="line">                                        <span class="attr">name</span>: <span class="string">"sec-do"</span>,</div><div class="line">                                        <span class="attr">path</span>: <span class="string">"/first-1/sec-do"</span>,</div><div class="line">                                        <span class="attr">child</span>: [</div><div class="line"></div><div class="line">                                        ]</div><div class="line">                                    &#125;</div><div class="line">                                ]</div><div class="line">                            &#125;,</div><div class="line">                            &#123;</div><div class="line">                                <span class="attr">name</span>: <span class="string">"sec-2-1"</span>,</div><div class="line">                                <span class="attr">path</span>: <span class="string">"/first-2/sec-2-1"</span>,</div><div class="line">                                <span class="attr">child</span>: [</div><div class="line">                                    &#123;</div><div class="line">                                        <span class="attr">name</span>: <span class="string">"first-1"</span>,</div><div class="line">                                        <span class="attr">path</span>: <span class="string">"/first-1"</span>,</div><div class="line">                                        <span class="attr">child</span>: [</div><div class="line">                                            &#123;</div><div class="line">                                                <span class="attr">name</span>: <span class="string">"sec-do"</span>,</div><div class="line">                                                <span class="attr">path</span>: <span class="string">"/first-1/sec-do"</span>,</div><div class="line">                                                <span class="attr">child</span>: [</div><div class="line"></div><div class="line">                                                ]</div><div class="line">                                            &#125;</div><div class="line">                                        ]</div><div class="line">                                    &#125;</div><div class="line">                                ]</div><div class="line">                            &#125;</div><div class="line">                        ]</div><div class="line">                    &#125;</div><div class="line">                ]</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://webooxx.com/2012/11/19/取得文件目录树-两种递归模式/" data-id="ciuxmqekj0017h2mownkumnvs" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用Fiddler调试Https的JS内容" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/10/18/使用Fiddler调试Https的JS内容/" class="article-date">
+  <time datetime="2012-10-18T07:37:00.000Z" itemprop="datePublished">2012-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/18/使用Fiddler调试Https的JS内容/">使用Fiddler调试Https的JS内容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>要抓取走HTTPS的JS内容，Fiddler必须解密HTTPS流量。但是，浏览器将会检查数字证书，并发现会话遭到窃听。为了骗过浏览器，Fiddler通过使用另一个数字证书重新加密HTTPS流量。Fiddler被配置为解密HTTPS流量后，会自动生成一个名为DO_NOT_TRUST_FiddlerRoot的CA证书，并使用该CA颁发每个域名的TLS证书。若DO_NOT_TRUST_FiddlerRoot证书被列入浏览器或其他软件的信任CA名单内，则浏览器或其他软件就会认为HTTPS会话是可信任的、而不会再弹出“证书错误”警告。</p>
+<p><img src="/images/fiddler-1.jpg" alt="fillder工具栏"><br><img src="/images/fiddler-2.jpg" alt="fillder工具栏"></p>
+<p>点完，ok 之后，会弹出一个框提示你是否安装证书，直接确定就好了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://webooxx.com/2012/10/18/使用Fiddler调试Https的JS内容/" data-id="ciuxmqek3000th2mo7sy2ohlt" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB开发/">WEB开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fiddler/">fiddler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/调试工具/">调试工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-js进制转换两则" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -105,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2012/07/10/js进制转换两则/" data-id="ciuxih1hc000s44moui1f3job" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2012/07/10/js进制转换两则/" data-id="ciuxmqek1000sh2motd2jyyj6" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基本语法/">基本语法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/进制处理/">进制处理</a></li></ul>
@@ -159,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2012/06/07/在WIN7-64下使用PYTHON获得摄像头图片/" data-id="ciuxih1ht000z44moajz11d9b" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2012/06/07/在WIN7-64下使用PYTHON获得摄像头图片/" data-id="ciuxmqeka0011h2momtsfne69" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摄像头/">摄像头</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频流/">视频流</a></li></ul>
@@ -204,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2012/05/27/大家来找茬作弊指南-用canvas做图片对比/" data-id="ciuxih1ik001g44mot2nu7uho" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2012/05/27/大家来找茬作弊指南-用canvas做图片对比/" data-id="ciuxmqekg0015h2moamcy0g3a" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -277,7 +544,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2012/04/13/WEB前端性能优化/" data-id="ciuxih1h3000n44mophzcixl8" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2012/04/13/WEB前端性能优化/" data-id="ciuxmqejp000kh2mojjysdw60" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB开发/">WEB开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
@@ -317,7 +584,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2012/03/09/取得序列中某个点的范围边界/" data-id="ciuxih1hy001444mokevrwcfq" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2012/03/09/取得序列中某个点的范围边界/" data-id="ciuxmqek6000wh2momp7vkuny" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分页/">分页</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发工具/">开发工具</a></li></ul>
@@ -356,7 +623,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2012/02/21/javascript的字段值，私有变量，静态方法声明/" data-id="ciuxih1h8000p44mo2h20y0zs" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2012/02/21/javascript的字段值，私有变量，静态方法声明/" data-id="ciuxmqejz000ph2moo3up6g18" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
@@ -400,7 +667,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2012/02/20/PHP在子类方法B调用父类的方法A时-不传参数时仍能得到方法B的名称/" data-id="ciuxih1gl000f44mo06jvupk3" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2012/02/20/PHP在子类方法B调用父类的方法A时-不传参数时仍能得到方法B的名称/" data-id="ciuxmqej7000ch2mo0nwogar0" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发工具/">开发工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
@@ -448,7 +715,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/12/08/jQuery的arrayLike/" data-id="ciuxih1gx000k44mopp7e8wm9" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2011/12/08/jQuery的arrayLike/" data-id="ciuxmqejt000nh2mo82nmamyo" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery原理/">jQuery原理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小工具/">小工具</a></li></ul>
@@ -508,7 +775,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/07/16/使用wubi安装ubuntu11-04后无线网卡被禁用无法打开-解决办法/" data-id="ciuxih1hh000t44mok28u68eu" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2011/07/16/使用wubi安装ubuntu11-04后无线网卡被禁用无法打开-解决办法/" data-id="ciuxmqek8000zh2mo537rsysg" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UBUNTUN/">UBUNTUN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/无线网卡/">无线网卡</a></li></ul>
@@ -614,7 +881,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/05/25/在手机上安装BT5系统-没错就是破解无线密码的那个/" data-id="ciuxih1i2001544moscmey579" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2011/05/25/在手机上安装BT5系统-没错就是破解无线密码的那个/" data-id="ciuxmqekc0014h2mo8cl7wlx4" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/收集系统/">收集系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/无线密码破解/">无线密码破解</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
@@ -653,7 +920,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/04/01/PHP遍历解析XML为一个数组/" data-id="ciuxih1gp000g44moapcnonbt" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2011/04/01/PHP遍历解析XML为一个数组/" data-id="ciuxmqejj000fh2moyru4ee7j" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XML解析/">XML解析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发工具/">开发工具</a></li></ul>
@@ -712,7 +979,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/03/11/讨厌的文本选区/" data-id="ciuxih1im001j44moen0n9vax" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2011/03/11/讨厌的文本选区/" data-id="ciuxmqekq001eh2mo4gnn35q6" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/富文本编辑器/">富文本编辑器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小工具/">小工具</a></li></ul>
@@ -755,7 +1022,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/03/02/Dom-Biulder-数据替换脚本-基于jquery/" data-id="ciuxih1fr000344moqlzgc3bd" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2011/03/02/Dom-Biulder-数据替换脚本-基于jquery/" data-id="ciuxmqei60001h2monbkfq1on" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小工具/">小工具</a></li></ul>
@@ -806,7 +1073,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/02/25/Dom-Builder-基于jquery/" data-id="ciuxih1fg000144mooiuxzh4s" class="article-share-link">Share</a>
+      <a data-url="http://webooxx.com/2011/02/25/Dom-Builder-基于jquery/" data-id="ciuxmqeic0003h2mozbz56noh" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小工具/">小工具</a></li></ul>
@@ -818,147 +1085,10 @@ HTTP1.1 pipelining Opera浏览器默认开启
 
 
   
-    <article id="post-返回对象在当前级别中是第几个元素" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2011/01/18/返回对象在当前级别中是第几个元素/" class="article-date">
-  <time datetime="2011-01-18T04:51:00.000Z" itemprop="datePublished">2011-01-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2011/01/18/返回对象在当前级别中是第几个元素/">返回对象在当前级别中是第几个元素</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>LuoYe℡  14:22:23<br>恩  我就是想怎么获取 每个层 相对于父级层 是第几个</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//语法：prev(element)</span></div><div class="line"><span class="comment">//参数：element对象</span></div><div class="line"><span class="comment">//返回：对象在当前级别中是第几个元素,从1开始</span></div><div class="line"><span class="comment">//2010-08-26 15:13:55</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">prev</span>(<span class="params">elem,cont</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(!cont)&#123;cont=<span class="number">1</span>&#125;</div><div class="line">    elem = elem.previousSibling;</div><div class="line">    <span class="keyword">if</span>(elem)&#123;<span class="keyword">return</span> prev(elem,(cont+<span class="number">1</span>))&#125;</div><div class="line">    <span class="keyword">return</span> cont</div><div class="line">&#125;</div><div class="line"></div><div class="line">prev($(<span class="string">"ext-gen232"</span>))</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/01/18/返回对象在当前级别中是第几个元素/" data-id="ciuxih1i4001744moi50rh6k4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小工具/">小工具</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-PHP缩略图-满窗格等比例缩小" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2011/01/18/PHP缩略图-满窗格等比例缩小/" class="article-date">
-  <time datetime="2011-01-18T04:45:00.000Z" itemprop="datePublished">2011-01-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2011/01/18/PHP缩略图-满窗格等比例缩小/">PHP缩略图-满窗格等比例缩小</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
-<li>等比例缩小</li>
-<li>必须是规定的缩略图大小</li>
-<li>原图可以裁剪但需要中心点在窗口</li>
-</ol>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">thumbs</span><span class="params">($FileName,$SaveTo,$SetW,$SetH)</span></span>&#123;</div><div class="line">        $IMGInfo= getimagesize($FileName);</div><div class="line">        <span class="keyword">if</span>(!$IMGInfo) <span class="keyword">return</span> <span class="keyword">false</span>;        </div><div class="line">        <span class="keyword">if</span>($IMGInfo[mime]== <span class="string">"image/pjpeg"</span> || $IMGInfo[mime]==<span class="string">"image/jpeg"</span>)&#123;</div><div class="line">            $ThisPhoto= imagecreatefromjpeg($FileName);</div><div class="line">        &#125;<span class="keyword">elseif</span>($IMGInfo[mime]== <span class="string">"image/x-png"</span> || $IMGInfo[mime]== <span class="string">"image/png"</span>)&#123;</div><div class="line">            $ThisPhoto= imagecreatefrompng($FileName);    </div><div class="line">        &#125;<span class="keyword">elseif</span>($IMGInfo[mime]== <span class="string">"image/gif"</span>)&#123;</div><div class="line">            $ThisPhoto=imagecreatefromgif($FileName);  </div><div class="line">        &#125;  </div><div class="line">        $width=$IMGInfo[<span class="number">0</span>];</div><div class="line">        $height=$IMGInfo[<span class="number">1</span>];    </div><div class="line">        $scalc = max($width/$SetW,$height/$SetH);</div><div class="line">        $nw = intval($width/$scalc);</div><div class="line">        $nh = intval($height/$scalc);</div><div class="line">        <span class="keyword">echo</span> <span class="string">"缩略大小：w$nw,h$nh &lt;br /&gt;"</span>;</div><div class="line">        <span class="keyword">if</span>($SetW-$nw == <span class="number">1</span>)&#123;$nw = $SetW;&#125;</div><div class="line">        <span class="keyword">if</span>($SetH-$nh == <span class="number">1</span>)&#123;$nh = $SetH;&#125;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"+修正1像素： w$nw,h$nh&lt;br /&gt;"</span>;</div><div class="line">        <span class="comment">//补宽</span></div><div class="line">        <span class="keyword">if</span>($SetW-$nw &gt; <span class="number">0</span>)&#123;</div><div class="line">            $nh = $nh +(($nh/$nw) * ($SetW-$nw));</div><div class="line">            <span class="keyword">echo</span> <span class="string">"*需补宽"</span>.($SetW-$nw).<span class="string">",陪补高"</span>.(($nh/$nw) * ($SetW-$nw)).<span class="string">"  &lt;br /&gt;"</span>;   </div><div class="line">            $nw = $SetW;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//补高</span></div><div class="line">        <span class="keyword">if</span>($SetH-$nh &gt; <span class="number">0</span>)&#123;</div><div class="line">            $nw = $nw + (($nw/$nh) * ($SetH-$nh));</div><div class="line">            <span class="keyword">echo</span> <span class="string">"*需补高"</span>.($SetH-$nh).<span class="string">",陪补宽"</span>. (($nw/$nh) * ($SetH-$nh)) .<span class="string">"&lt;br /&gt;"</span>;</div><div class="line">            $nh = $SetH;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $nw = intval($nw);</div><div class="line">        $nh = intval($nh);</div><div class="line">        <span class="keyword">echo</span> <span class="string">"+修正大小：w$nw,h$nh&lt;br /&gt;"</span>;</div><div class="line">        $px = ($SetW - $nw)/<span class="number">2</span>;</div><div class="line">        $py = ($SetH - $nh)/<span class="number">2</span>;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"窗口大小：w$SetW,h$SetH &lt;br /&gt;"</span>;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"+偏移修正：x$px,y$py &lt;br /&gt;"</span>;</div><div class="line">        $NewPhoto=imagecreatetruecolor($SetW,$SetH);</div><div class="line">        imagecopyresized($NewPhoto,$ThisPhoto,$px,$py,<span class="number">0</span>,<span class="number">0</span>,$nw,$nh,$width,$height);</div><div class="line">        ImageJpeg ($NewPhoto,$SaveTo);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    thumbs(<span class="string">'a.jpg'</span>,<span class="string">'newa.jpg'</span>,<span class="number">150</span>,<span class="number">70</span>);</div><div class="line"><span class="meta">?&gt;</span></div><div class="line">&lt;style&gt;</div><div class="line">    img&#123; border:<span class="number">1</span>px solid <span class="comment">#ccc;margin:2px;&#125;</span></div><div class="line">&lt;/style&gt;</div><div class="line">&lt;img src=<span class="string">"/a.jpg"</span>  /&gt;</div><div class="line">&lt;img src=<span class="string">"/newa.jpg"</span> /&gt;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://webooxx.com/2011/01/18/PHP缩略图-满窗格等比例缩小/" data-id="ciuxih1gg000c44molkqprgip" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发工具/">开发工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缩略图/">缩略图</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-FLASH全站项目-园林网志" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2010/04/19/FLASH全站项目-园林网志/" class="article-date">
-  <time datetime="2010-04-19T03:25:11.000Z" itemprop="datePublished">2010-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2010/04/19/FLASH全站项目-园林网志/">FLASH全站项目-园林网志</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这个项目是我10年为南昌的一个做园林设计的公司开发的网站，纯flash，技术简单的可怕～～</p>
-<h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><ul>
-<li>类型：整站FLASH + XML,后台ASP</li>
-<li>时间：2010-04-19</li>
-</ul>
-<p><a href="/ddemo/2010YLWZ/site/default.html">效果预览</a><br><a href="/ddemo/2010YLWZ/site.zip">整站下载</a></p>
-<h2 id="效果图预览"><a href="#效果图预览" class="headerlink" title="效果图预览"></a>效果图预览</h2><p><img src="/ddemo/2010YLWZ/preview/1.jpg" alt="加载界面"></p>
-<p><img src="/ddemo/2010YLWZ/preview/2.jpg" alt="首页"></p>
-<p><img src="/ddemo/2010YLWZ/preview/3.1.jpg" alt="新闻页"></p>
-<p><img src="/ddemo/2010YLWZ/preview/3.2.jpg" alt="文章页详细"></p>
-<p><img src="/ddemo/2010YLWZ/preview/4.1.jpg" alt="案例页封面"></p>
-<p><img src="/ddemo/2010YLWZ/preview/4.2.jpg" alt="案例页详细"></p>
-<p><img src="/ddemo/2010YLWZ/preview/5.1.jpg" alt="文章列表页"></p>
-<p><img src="/ddemo/2010YLWZ/preview/5.2.jpg" alt="文章详细"></p>
-<p><img src="/ddemo/2010YLWZ/preview/6.jpg" alt="关于我们"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://webooxx.com/2010/04/19/FLASH全站项目-园林网志/" data-id="ciuxih1id001c44moob7x8tae" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flash/">flash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/全站/">全站</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/商业项目/">商业项目</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -969,9 +1099,9 @@ HTTP1.1 pipelining Opera浏览器默认开启
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UBUNTUN/">UBUNTUN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB开发/">WEB开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WIN7/">WIN7</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML解析/">XML解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/">fiddler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash/">flash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery原理/">jQuery原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js特效/">js特效</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/一行代码/">一行代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/位操作/">位操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全站/">全站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存性能/">内存性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分页/">分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单页应用/">单页应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/商业项目/">商业项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基本语法/">基本语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本编辑器/">富文本编辑器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小工具/">小工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发工具/">开发工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发经验/">开发经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开机脚本/">开机脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/慕课网案例/">慕课网案例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/摄像头/">摄像头</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收集系统/">收集系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率工具/">效率工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无线密码破解/">无线密码破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无线网卡/">无线网卡</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能/">智能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能设备/">智能设备</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生命游戏/">生命游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度首页彩蛋/">百度首页彩蛋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/相册/">相册</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/眼动实验/">眼动实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缩略图/">缩略图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络案例/">网络案例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频流/">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调试工具/">调试工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进制处理/">进制处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迷宫/">迷宫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑客帝国/">黑客帝国</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QQ空间/">QQ空间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resizeable/">Resizeable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UBUNTUN/">UBUNTUN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB开发/">WEB开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WIN7/">WIN7</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML解析/">XML解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/">fiddler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flash/">flash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery原理/">jQuery原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js特效/">js特效</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js组件/">js组件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slider/">slider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/一行代码/">一行代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/位操作/">位操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全站/">全站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存性能/">内存性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分页/">分页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单页应用/">单页应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/商业项目/">商业项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基本语法/">基本语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本编辑器/">富文本编辑器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小工具/">小工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发工具/">开发工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发经验/">开发经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开机脚本/">开机脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/慕课网案例/">慕课网案例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拖拽/">拖拽</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/摄像头/">摄像头</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收集系统/">收集系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率工具/">效率工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无线密码破解/">无线密码破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无线网卡/">无线网卡</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时光轴/">时光轴</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能/">智能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能设备/">智能设备</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生命游戏/">生命游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度首页彩蛋/">百度首页彩蛋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/相册/">相册</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/眼动实验/">眼动实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缩略图/">缩略图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络案例/">网络案例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频流/">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调试工具/">调试工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进制处理/">进制处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迷宫/">迷宫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑客帝国/">黑客帝国</a></li></ul>
     </div>
   </div>
 
@@ -979,9 +1109,9 @@ HTTP1.1 pipelining Opera浏览器默认开启
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/PHP/" style="font-size: 18.33px;">PHP</a> <a href="/tags/UBUNTUN/" style="font-size: 10px;">UBUNTUN</a> <a href="/tags/WEB开发/" style="font-size: 11.67px;">WEB开发</a> <a href="/tags/WIN7/" style="font-size: 10px;">WIN7</a> <a href="/tags/XML解析/" style="font-size: 10px;">XML解析</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/flash/" style="font-size: 10px;">flash</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/jQuery原理/" style="font-size: 10px;">jQuery原理</a> <a href="/tags/js特效/" style="font-size: 16.67px;">js特效</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/一行代码/" style="font-size: 10px;">一行代码</a> <a href="/tags/位操作/" style="font-size: 11.67px;">位操作</a> <a href="/tags/全站/" style="font-size: 10px;">全站</a> <a href="/tags/内存性能/" style="font-size: 10px;">内存性能</a> <a href="/tags/分页/" style="font-size: 11.67px;">分页</a> <a href="/tags/单页应用/" style="font-size: 10px;">单页应用</a> <a href="/tags/商业项目/" style="font-size: 10px;">商业项目</a> <a href="/tags/基本语法/" style="font-size: 10px;">基本语法</a> <a href="/tags/富文本编辑器/" style="font-size: 10px;">富文本编辑器</a> <a href="/tags/小工具/" style="font-size: 16.67px;">小工具</a> <a href="/tags/开发工具/" style="font-size: 15px;">开发工具</a> <a href="/tags/开发经验/" style="font-size: 10px;">开发经验</a> <a href="/tags/开机脚本/" style="font-size: 10px;">开机脚本</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/慕课网案例/" style="font-size: 11.67px;">慕课网案例</a> <a href="/tags/摄像头/" style="font-size: 10px;">摄像头</a> <a href="/tags/收集系统/" style="font-size: 10px;">收集系统</a> <a href="/tags/效率工具/" style="font-size: 10px;">效率工具</a> <a href="/tags/无线密码破解/" style="font-size: 10px;">无线密码破解</a> <a href="/tags/无线网卡/" style="font-size: 10px;">无线网卡</a> <a href="/tags/智能/" style="font-size: 11.67px;">智能</a> <a href="/tags/智能设备/" style="font-size: 11.67px;">智能设备</a> <a href="/tags/游戏/" style="font-size: 16.67px;">游戏</a> <a href="/tags/生命游戏/" style="font-size: 11.67px;">生命游戏</a> <a href="/tags/用户体验/" style="font-size: 11.67px;">用户体验</a> <a href="/tags/百度首页彩蛋/" style="font-size: 10px;">百度首页彩蛋</a> <a href="/tags/相册/" style="font-size: 11.67px;">相册</a> <a href="/tags/眼动实验/" style="font-size: 11.67px;">眼动实验</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/缩略图/" style="font-size: 10px;">缩略图</a> <a href="/tags/网络案例/" style="font-size: 10px;">网络案例</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/视频流/" style="font-size: 10px;">视频流</a> <a href="/tags/调试工具/" style="font-size: 10px;">调试工具</a> <a href="/tags/进制处理/" style="font-size: 10px;">进制处理</a> <a href="/tags/迷宫/" style="font-size: 10px;">迷宫</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a> <a href="/tags/面向对象/" style="font-size: 11.67px;">面向对象</a> <a href="/tags/黑客帝国/" style="font-size: 10px;">黑客帝国</a>
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/PHP/" style="font-size: 16.25px;">PHP</a> <a href="/tags/QQ空间/" style="font-size: 11.25px;">QQ空间</a> <a href="/tags/Resizeable/" style="font-size: 10px;">Resizeable</a> <a href="/tags/UBUNTUN/" style="font-size: 10px;">UBUNTUN</a> <a href="/tags/WEB开发/" style="font-size: 11.25px;">WEB开发</a> <a href="/tags/WIN7/" style="font-size: 10px;">WIN7</a> <a href="/tags/XML解析/" style="font-size: 10px;">XML解析</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/flash/" style="font-size: 10px;">flash</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/jQuery原理/" style="font-size: 10px;">jQuery原理</a> <a href="/tags/js特效/" style="font-size: 18.75px;">js特效</a> <a href="/tags/js组件/" style="font-size: 11.25px;">js组件</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/slider/" style="font-size: 10px;">slider</a> <a href="/tags/一行代码/" style="font-size: 10px;">一行代码</a> <a href="/tags/位操作/" style="font-size: 11.25px;">位操作</a> <a href="/tags/全站/" style="font-size: 10px;">全站</a> <a href="/tags/内存性能/" style="font-size: 10px;">内存性能</a> <a href="/tags/分页/" style="font-size: 11.25px;">分页</a> <a href="/tags/单页应用/" style="font-size: 10px;">单页应用</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/商业项目/" style="font-size: 10px;">商业项目</a> <a href="/tags/基本语法/" style="font-size: 10px;">基本语法</a> <a href="/tags/富文本编辑器/" style="font-size: 10px;">富文本编辑器</a> <a href="/tags/小工具/" style="font-size: 15px;">小工具</a> <a href="/tags/开发工具/" style="font-size: 13.75px;">开发工具</a> <a href="/tags/开发经验/" style="font-size: 10px;">开发经验</a> <a href="/tags/开机脚本/" style="font-size: 10px;">开机脚本</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/慕课网案例/" style="font-size: 17.5px;">慕课网案例</a> <a href="/tags/拖拽/" style="font-size: 10px;">拖拽</a> <a href="/tags/摄像头/" style="font-size: 10px;">摄像头</a> <a href="/tags/收集系统/" style="font-size: 10px;">收集系统</a> <a href="/tags/效率工具/" style="font-size: 10px;">效率工具</a> <a href="/tags/无线密码破解/" style="font-size: 10px;">无线密码破解</a> <a href="/tags/无线网卡/" style="font-size: 10px;">无线网卡</a> <a href="/tags/时光轴/" style="font-size: 11.25px;">时光轴</a> <a href="/tags/智能/" style="font-size: 11.25px;">智能</a> <a href="/tags/智能设备/" style="font-size: 11.25px;">智能设备</a> <a href="/tags/游戏/" style="font-size: 15px;">游戏</a> <a href="/tags/生命游戏/" style="font-size: 11.25px;">生命游戏</a> <a href="/tags/用户体验/" style="font-size: 11.25px;">用户体验</a> <a href="/tags/百度首页彩蛋/" style="font-size: 10px;">百度首页彩蛋</a> <a href="/tags/相册/" style="font-size: 11.25px;">相册</a> <a href="/tags/眼动实验/" style="font-size: 11.25px;">眼动实验</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 13.75px;">算法</a> <a href="/tags/缩略图/" style="font-size: 10px;">缩略图</a> <a href="/tags/网络案例/" style="font-size: 10px;">网络案例</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/视频流/" style="font-size: 10px;">视频流</a> <a href="/tags/调试工具/" style="font-size: 10px;">调试工具</a> <a href="/tags/进制处理/" style="font-size: 10px;">进制处理</a> <a href="/tags/迷宫/" style="font-size: 10px;">迷宫</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a> <a href="/tags/面向对象/" style="font-size: 11.25px;">面向对象</a> <a href="/tags/黑客帝国/" style="font-size: 10px;">黑客帝国</a>
     </div>
   </div>
 
@@ -990,7 +1120,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">April 2010</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">April 2010</a></li></ul>
     </div>
   </div>
 
@@ -998,7 +1128,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -1035,7 +1165,7 @@ HTTP1.1 pipelining Opera浏览器默认开启
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Lyn<br>
-      Powered by <a href="mailto://web@webooxx.com" target="_blank">webooxx.com</a>
+      Propulsé by <a href="mailto://web@webooxx.com" target="_blank">webooxx.com</a>
     </div>
   </div>
 </footer>
