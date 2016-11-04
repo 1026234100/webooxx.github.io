@@ -1302,8 +1302,6 @@ pre .javascript .function {
   color: #777;
   text-shadow: 0 1px #fff;
   background: #ddd;
-  -webkit-box-shadow: 0 -1px 4px #ccc inset;
-  box-shadow: 0 -1px 4px #ccc inset;
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 3px;
